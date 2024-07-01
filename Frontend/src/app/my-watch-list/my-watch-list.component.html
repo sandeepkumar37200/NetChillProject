@@ -1,0 +1,20 @@
+<div class="container" style="margin-top:50px ;">
+    <h2>Watch Movie List! </h2>
+    <table class="table table-success table-striped" style="margin-top: 20px;">
+        <thead>
+          <tr>
+            <th scope="col">Sr.no.</th>
+            <th scope="col">Movies</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let movie of movieList; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{movie?.name}}</td>
+            <td>{{movie?.yor}}</td>
+            <td>{{movie?.category}}</td>
+          </tr>
+      </table>
+</div>

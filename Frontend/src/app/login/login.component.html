@@ -1,0 +1,57 @@
+<body>
+
+    <h3 class="d-flex justify-content-center pt-4">Login</h3>
+    <hr>
+    <a href="/" class="link-none color-dark hover-primary ms-4">&#8592; Back to Home</a>
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 border border-primary shadow login-card">
+
+                <form #loginForm="ngForm" (ngSubmit)="onFormSubmit(loginForm.value)">
+
+                    <div *ngIf="loginForm.submitted" class="text-danger">
+                        <div *ngIf="loginForm.form.errors?.['wrongPass']">
+                            Email ID and Password do not match.
+                        </div>
+                        <div *ngIf="loginForm.form.errors?.['invalidCred']">
+                            Invalid Credentials.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-12 m-2">
+                        <label for="EmailId" class="m-1">EmailId</label>
+                        <input type="email" class="form-control" name="EmailId" #email="ngModel" ngModel required />
+
+                        <div *ngIf="email.invalid && (email.dirty || email.touched || loginForm.submitted)"
+                            class="text-danger">
+                            <div *ngIf="loginForm.controls['EmailId'].errors?.['required']">
+                                Email ID cannot be empty.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 m-2">
+                        <label for="password" class="m-1">Password</label>
+                        <input type="password" class="form-control" name="Password" #passwordHash="ngModel" ngModel
+                            required />
+
+                        <div *ngIf="passwordHash.invalid && (passwordHash.dirty || passwordHash.touched || loginForm.submitted)"
+                            class="text-danger">
+                            <div *ngIf="loginForm.controls['Password'].errors?.['required']">
+                                Password cannot be empty.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column col-6 m-auto">
+                        <button type="submit" class=" m-2 btn  btn-primary">
+                            Login
+                        </button>
+                        <a class=" m-2 btn btn-success " routerLink="/signup">
+                            Register New User
+                        </a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

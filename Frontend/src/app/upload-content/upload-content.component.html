@@ -1,0 +1,116 @@
+<h3 class="d-flex justify-content-center pt-2">Upload Movie</h3>
+<hr>
+<div class="d-flex justify-content-center">
+    <form #uploadContent="ngForm" (ngSubmit)="uploadFormSubmit(uploadContent.value)"
+        class="border border-primary shadow p-4 rounded row col-11 justify-content-evenly">
+
+        <div class="col-md-4">
+            <div class="col-10 ratio ratio-1x1">
+                <img [src]="imageSrc" alt="" />
+            </div>
+            <label class="form-label" style="margin-top:20px ;"> Provide Movie Poster Link : </label>
+            <input type="text" name="thumbnail" id="thumbnail"  class="form-control my-4"
+                (change)="readURL($event);" ngModel required>
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched || uploadContent.submitted)" class="text-danger">
+                <div *ngIf="uploadContent.controls['thumbnail'].errors?.['required']">
+                    Please chose the Movie Poster.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-outline mb-4">
+                <label class="form-label">Movie Name</label>
+                <input type="text" class="form-control" placeholder="Movie Name" name="name" #name="ngModel" ngModel
+                    required />
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched || uploadContent.submitted)"
+                    class="text-danger">
+                    <div *ngIf="uploadContent.controls['name'].errors?.['required']">
+                        Please enter the Movie name.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-outline mb-3">
+                <label class="form-label">Category</label>
+                <input type="text" class="form-control" placeholder="Category" name="category" #category="ngModel"
+                    ngModel required />
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched || uploadContent.submitted)"
+                    class="text-danger">
+                    <div *ngIf="uploadContent.controls['category'].errors?.['required']">
+                        Please enter the Category.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-outline mb-3">
+                <label class="form-label">Release Date</label>
+                <input type="date" class="form-control" placeholder="Release Date" name="releasedate"
+                    #releasedate="ngModel" ngModel required />
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched || uploadContent.submitted)"
+                    class="text-danger">
+                    <div *ngIf="uploadContent.controls['releasedate'].errors?.['required']">
+                        Please enter the Release Date.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-outline mb-3">
+                <label class="form-label">Availability Start Date</label>
+                <input type="date" class="form-control" placeholder="ASD" name="ASD" #ASD="ngModel" ngModel required />
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched || uploadContent.submitted)"
+                    class="text-danger">
+                    <div *ngIf="uploadContent.controls['ASD'].errors?.['required']">
+                        Please enter the Availability Start Date.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-outline mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" name="description" #description="ngModel" ngModel required></textarea>
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched || uploadContent.submitted)"
+                    class="text-danger">
+                    <div *ngIf="uploadContent.controls['description'].errors?.['required']">
+                        Please enter the Description.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-outline mb-3">
+                <label class="form-label" for="isFeatured">Is Featured </label>
+                <input type="checkbox" id="isFeatured" style="margin-left:10px;" name="isfeatured" #isfeatured="ngModel"
+                    ngModel required />
+            </div>
+
+            <div class="form-outline mb-3">
+                <label class="form-label" for="isFeatured">Movie Link / Trailer Link </label>
+                
+                <input type="text" class="form-control" id="isFeatured" name="movieFile"
+                    #movieFile="ngModel" ngModel required />
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched || uploadContent.submitted)"
+                    class="text-danger">
+                    <div *ngIf="uploadContent.controls['movieFile'].errors?.['required']">
+                        Please enter the Movie Video link
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-evenly">
+                <button type="submit" class="btn btn-primary">
+                    Add new movie
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    Clear
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

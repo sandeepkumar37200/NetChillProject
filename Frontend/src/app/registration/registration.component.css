@@ -1,0 +1,17 @@
+.link-none {
+    text-decoration: none;
+}
+
+.hover-primary:hover {
+    color: #0a84ff
+}
+
+.color-dark {
+    color: #212529;
+}
+
+.register-card {
+    background-color: #00000008;
+    padding: 1em;
+    border-radius: .3em;
+}

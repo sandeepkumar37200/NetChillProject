@@ -1,0 +1,136 @@
+<h3 class="d-flex justify-content-center pt-4">Registeration</h3>
+<hr>
+<a href="/" class="link-none color-dark hover-primary ms-4">&#8592; Back to Home</a>
+<div class="d-flex justify-content-center">
+    <form #registerForm="ngForm" (ngSubmit)="onFormSubmit(registerForm.value)" style="width:350px;">
+
+        <div *ngIf="registerForm.submitted" class="text-danger">
+            <div *ngIf="registerForm.form.errors?.['conflict']">
+                Email already exist, please try another
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="Full Name" name="FullName" #name="ngModel" ngModel
+                required />
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched || registerForm.submitted)" class="text-danger">
+                <div *ngIf="registerForm.controls['FullName'].errors?.['required']">
+                    Name cannot be empty.
+                </div>
+                <div *ngIf="registerForm.controls['FullName'].errors?.['incorrect']">
+                    Name must only contain alphabets.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-3">
+            <label class="form-label">EmailId </label>
+            <input type="email" class="form-control" placeholder="Email Id" name="emailId" #email="ngModel" ngModel
+                required />
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched || registerForm.submitted)" class="text-danger">
+                <div *ngIf="registerForm.controls['emailId'].errors?.['required']">
+                    Email ID cannot be empty.
+                </div>
+                <div *ngIf="registerForm.controls['emailId'].errors?.['incorrect']">
+                    Not a valid Email ID.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-3">
+            <label class="form-label">Create Password</label>
+            <input type="password" class="form-control" placeholder="Create Password" name="passwordHash"
+                #passwordHash="ngModel" ngModel required />
+
+            <div *ngIf="passwordHash.invalid && (passwordHash.dirty || passwordHash.touched || registerForm.submitted)"
+                class="text-danger">
+                <div *ngIf="registerForm.controls['passwordHash'].errors?.['required']">
+                    Password cannot be empty.
+                </div>
+                <div *ngIf="registerForm.controls['passwordHash'].errors?.['minlen']">
+                    Password must be minimum 8 charactes long.
+                </div>
+                <div *ngIf="registerForm.controls['passwordHash'].errors?.['incorrect']">
+                    Please follow the below format: -
+                    <ul>
+                        <li>Atleast one capital letter [A-Z]</li>
+                        <li>Atleast one small letter [a-z]</li>
+                        <li>Atleast one number [0-9]</li>
+                        <li>Atleast one special character [#?!@$ %^&*-]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-outline mb-3">
+            <label class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" placeholder="Confirm Password" name="passwordSalt"
+                #passwordSalt="ngModel" ngModel required />
+
+            <div *ngIf="passwordSalt.invalid && (passwordSalt.dirty || passwordSalt.touched || registerForm.submitted)"
+                class="text-danger">
+                <div *ngIf="registerForm.controls['passwordSalt'].errors?.['required']">
+                    Password cannot be empty.
+                </div>
+                <div *ngIf="registerForm.controls['passwordSalt'].errors?.['mismatch']">
+                    Password and Confirm Password do not match.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-3">
+            <input type="checkbox" style="margin-right: 10px;" name="tandc" #tandc="ngModel" ngModel required />
+            <a href="https://help.netflix.com/legal/termsofuse">I agree To Terms and Conditions</a>
+
+            <div *ngIf="tandc.invalid && registerForm.submitted" class="text-danger">
+                <div *ngIf="registerForm.controls['tandc'].errors?.['required']">
+                    Please agree to Terms and Conditions.
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="text-center text-lg-start mt-2 px-2">
+                <button type="submit" class="btn btn-primary "
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+            </div>
+            <div class="text-center text-lg-start mt-2 px-2">
+                <a class="btn btn-primary " style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                    routerLink="/login">Login</a>
+            </div>
+        </div>
+
+    </form>
+    <!-- Succes Modal -->
+    <div class="position-absolute top-0" id="exampleModal" tabindex="1" [hidden]="!showSuccessMessage">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sucessfully Register</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">You have register sucessfully please go to home page</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="goToHome()">Go Home Page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Error Modal -->
+    <div class="position-absolute top-0" id="exampleModal" tabindex="1" [hidden]="!showErrorMessage">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">Some Error has accured.</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="hideErrorMessage()">Go Home Page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

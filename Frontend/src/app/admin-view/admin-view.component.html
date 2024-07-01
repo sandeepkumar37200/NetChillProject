@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">NetChill</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " routeLinkActive="active" aria-current="page" routerLink="./">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routeLinkActive="active" routerLink="/adminView/featureList">Feature</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link " routeLinkActive="active" routerLink="/adminView/NewRelease">New Release</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routeLinkActive="active" routerLink="/adminView/UpComing">UpComing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routeLinkActive="active" routerLink="/adminView/MyList">My List</a>
+        </li>
+        <a class="btn btn-outline-success" style="margin-left: 20px;" routerLink="/adminView/UploadContent"
+          role="button">Upload Content</a>
+        <a class="btn btn-outline-success" style="margin-left:20px ;" routerLink="/adminView/Subscription"
+          role="button">Revoke Subscription</a>
+      </ul>
+      <form class="d-flex">
+        <a class="btn btn-outline-success" (click)="logOut()" role="button">Signout</a>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

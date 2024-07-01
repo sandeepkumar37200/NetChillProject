@@ -1,0 +1,41 @@
+<div class="container-fluid row pt-4">
+    <div class="col-md-8">
+        <video src="{{data?.contentPath}}" controls="true" class="w-100 ratio ratio-16x9"></video>
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-dark fs-3 d-flex mx-auto" (click)="AddToUserList()"
+            [disabled]="addToListBtnValue.disabled">{{ addToListBtnValue.value }}</button>
+        <div class="col-8 d-flex mx-auto flex-column" style="margin-top: 20px;">
+            <h1 class="d-flex mx-auto">{{data?.name}}</h1>
+
+            <img class="img-thumbnail " src="{{data?.moviesPoster}}" alt="">
+            <h6 style="margin-top: 20px;">Release Date : {{data?.yor}}</h6>
+            <h6 style="margin-top: 10px;">{{data?.description}}</h6>
+            <h5>{{data?.category}}</h5>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top:50px">
+    <h1>Similar Movies !..</h1>
+    <div class="container">
+        <div class="container" style="margin-top:50px">
+            <div class="row">
+                <ng-container *ngFor="let movie of featuredMovieList">
+                    <div class="col-sm-3 p-3" *ngIf="movie?.id !== id">
+                        <a class="card shadow" [href]="'./userView/WatchMode/'+movie?.id">
+                            <div class="img-rapper p-2">
+                                <img class="card-img-top rounded-2" [src]="movie.moviesPoster" alt="">
+                            </div>
+                            <div class="card-body p-2">
+                                <h4>{{movie.name}}</h4>
+                                <h6>ReleaseDate : {{movie.yor}}</h6>
+                                <h6>Category : {{movie.category}}</h6>
+                            </div>
+                        </a>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
